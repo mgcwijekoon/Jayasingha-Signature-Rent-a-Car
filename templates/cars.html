@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Explore the Jayasingha Signature & Rent-a-Car fleet."
+    >
+
+    <title>
+        Our Fleet | Jayasingha Signature & Rent-a-Car
+    </title>
+
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #111827;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            background: rgba(2, 6, 23, 0.95);
+
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .brand-main {
+            font-size: 19px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .brand-sub {
+            margin-top: 3px;
+            font-size: 9px;
+            color: #94a3b8;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: #dbe4ef;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-book {
+            background: white;
+            color: #111827 !important;
+            padding: 11px 18px;
+            border-radius: 10px;
+        }
+
+        .menu-btn {
+            display: none;
+
+            border: none;
+            background: transparent;
+
+            color: white;
+
+            font-size: 28px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================== */
+
+        .page-hero {
+            position: relative;
+            min-height: 370px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(2,6,23,0.97),
+                    rgba(15,23,42,0.88)
+                ),
+                url("{{ url_for('static', filename='images/aqua-1.jpeg') }}")
+                center/cover no-repeat;
+
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            right: -160px;
+            top: -180px;
+        }
+
+        .page-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,0.05);
+
+            left: -130px;
+            bottom: -140px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 780px;
+        }
+
+        .hero-label {
+            display: inline-block;
+
+            padding: 8px 13px;
+
+            border: 1px solid rgba(255,255,255,0.13);
+
+            background: rgba(255,255,255,0.06);
+
+            border-radius: 50px;
+
+            color: #cbd5e1;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 18px;
+        }
+
+        .hero-content h1 {
+            color: white;
+
+            font-size: clamp(42px, 6vw, 68px);
+
+            line-height: 1;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 18px;
+        }
+
+        .hero-content p {
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #cbd5e1;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           SEARCH / FILTER BAR
+        ========================================================== */
+
+        .controls-wrap {
+            width: 88%;
+            max-width: 1150px;
+
+            margin: -35px auto 0;
+
+            position: relative;
+            z-index: 20;
+        }
+
+        .controls {
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 18px 42px rgba(15,23,42,0.12);
+
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr;
+
+            gap: 14px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            padding: 13px 16px;
+
+            border: 1px solid #d7dce2;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            color: #111827;
+
+            background: #f8fafc;
+
+            font-size: 14px;
+        }
+
+        .search-box input:focus {
+            border-color: #334155;
+
+            box-shadow:
+                0 0 0 3px rgba(51,65,85,0.08);
+        }
+
+        .filter-box select {
+            width: 100%;
+
+            padding: 13px 16px;
+
+            border: 1px solid #d7dce2;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            background: #f8fafc;
+
+            font-size: 14px;
+
+            color: #111827;
+        }
+
+
+        /* =========================================================
+           SECTION
+        ========================================================== */
+
+        .fleet-section {
+            width: 88%;
+            max-width: 1200px;
+
+            margin: 90px auto 110px;
+        }
+
+        .section-top {
+            display: flex;
+
+            align-items: end;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 35px;
+        }
+
+        .section-top h2 {
+            font-size: 33px;
+
+            color: #0f172a;
+        }
+
+        .section-top p {
+            margin-top: 7px;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+        .car-count {
+            color: #64748b;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           CAR GRID
+        ========================================================== */
+
+        .cars-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 25px;
+        }
+
+
+        /* =========================================================
+           CAR CARD
+        ========================================================== */
+
+        .car-card {
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 9px 28px rgba(15,23,42,0.07);
+
+            border: 1px solid #edf0f4;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 22px 45px rgba(15,23,42,0.14);
+        }
+
+
+        /* =========================================================
+           IMAGE AREA
+        ========================================================== */
+
+        .image-area {
+            position: relative;
+
+            width: 100%;
+
+            height: 240px;
+
+            overflow: hidden;
+
+            background: #e5e7eb;
+        }
+
+        .image-area > img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.5s ease;
+        }
+
+        .car-card:hover .image-area > img {
+            transform: scale(1.05);
+        }
+
+        .availability {
+            position: absolute;
+
+            top: 14px;
+            left: 14px;
+
+            padding: 7px 11px;
+
+            border-radius: 50px;
+
+            background: rgba(15,23,42,0.84);
+
+            color: white;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 0.8px;
+        }
+
+        .model-tag {
+            position: absolute;
+
+            right: 14px;
+            top: 14px;
+
+            padding: 7px 10px;
+
+            border-radius: 50px;
+
+            background: rgba(255,255,255,0.91);
+
+            color: #111827;
+
+            font-size: 9px;
+
+            font-weight: 900;
+        }
+
+
+        /* =========================================================
+           AQUA GALLERY
+        ========================================================== */
+
+        .aqua-gallery {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .aqua-gallery img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-btn {
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: rgba(0,0,0,0.58);
+
+            color: white;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .gallery-btn:hover {
+            background: rgba(0,0,0,0.82);
+        }
+
+        .gallery-prev {
+            left: 11px;
+        }
+
+        .gallery-next {
+            right: 11px;
+        }
+
+        .photo-count {
+            position: absolute;
+
+            bottom: 11px;
+            right: 11px;
+
+            padding: 6px 10px;
+
+            border-radius: 50px;
+
+            background: rgba(0,0,0,0.58);
+
+            color: white;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           CONTENT
+        ========================================================== */
+
+        .card-content {
+            padding: 23px;
+        }
+
+        .card-title-row {
+            display: flex;
+
+            align-items: start;
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 22px;
+
+            color: #111827;
+        }
+
+        .price {
+            white-space: nowrap;
+
+            color: #111827;
+
+            font-size: 15px;
+
+            font-weight: 900;
+        }
+
+        .subtitle {
+            color: #64748b;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            margin-bottom: 15px;
+        }
+
+        .spec-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 8px;
+
+            margin-bottom: 18px;
+        }
+
+        .spec {
+            padding: 9px 10px;
+
+            border-radius: 9px;
+
+            background: #f8fafc;
+
+            color: #64748b;
+
+            font-size: 11px;
+
+            border: 1px solid #eef2f7;
+        }
+
+        .book-button {
+            display: block;
+
+            text-align: center;
+
+            width: 100%;
+
+            padding: 13px;
+
+            border-radius: 10px;
+
+            background: #111827;
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: 0.25s ease;
+        }
+
+        .book-button:hover {
+            background: #334155;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           EMPTY STATE
+        ========================================================== */
+
+        .empty-state {
+            display: none;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            background: white;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(15,23,42,0.05);
+        }
+
+        .empty-state h3 {
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           CTA
+        ========================================================== */
+
+        .cta-section {
+            width: 88%;
+            max-width: 1200px;
+
+            margin: 0 auto 100px;
+        }
+
+        .cta {
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 23px;
+
+            padding: 55px 30px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #020617,
+                    #334155
+                );
+
+            color: white;
+
+            box-shadow:
+                0 20px 45px rgba(15,23,42,0.18);
+        }
+
+        .cta::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,0.07);
+
+            right: -130px;
+            top: -160px;
+        }
+
+        .cta h2 {
+            position: relative;
+            z-index: 2;
+
+            font-size: 36px;
+
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            position: relative;
+            z-index: 2;
+
+            color: #cbd5e1;
+
+            font-size: 13px;
+
+            margin-bottom: 24px;
+        }
+
+        .cta-button {
+            position: relative;
+            z-index: 2;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 13px 21px;
+
+            border-radius: 10px;
+
+            background: white;
+
+            color: #111827;
+
+            font-size: 13px;
+
+            font-weight: 900;
+        }
+
+
+        /* =========================================================
+           WHATSAPP
+        ========================================================== */
+
+        .whatsapp {
+            position: fixed;
+
+            right: 20px;
+            bottom: 20px;
+
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 1200;
+
+            border-radius: 50%;
+
+            background: #25D366;
+
+            color: white;
+
+            font-size: 26px;
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.22);
+
+            transition: 0.25s ease;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.08);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================== */
+
+        footer {
+            background: #020617;
+
+            color: white;
+
+            padding: 45px 7% 22px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr 1fr;
+
+            gap: 35px;
+
+            padding-bottom: 30px;
+        }
+
+        footer h3 {
+            font-size: 15px;
+
+            margin-bottom: 10px;
+        }
+
+        footer p,
+        footer a {
+            color: #94a3b8;
+
+            font-size: 12px;
+
+            line-height: 1.9;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding-top: 17px;
+
+            border-top: 1px solid #1e293b;
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================================
+           TABLET
+        ========================================================== */
+
+        @media (max-width: 1050px) {
+
+            .cars-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================== */
+
+        @media (max-width: 720px) {
+
+            .navbar {
+                height: 70px;
+
+                padding: 0 20px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+
+                position: absolute;
+
+                top: 70px;
+                left: 0;
+                right: 0;
+
+                padding: 18px 20px;
+
+                flex-direction: column;
+
+                background: #020617;
+
+                gap: 7px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+
+                text-align: center;
+
+                padding: 11px;
+            }
+
+            .brand-main {
+                font-size: 16px;
+            }
+
+            .page-hero {
+                min-height: 330px;
+
+                padding: 65px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 44px;
+            }
+
+            .hero-content p {
+                font-size: 13px;
+            }
+
+            .controls-wrap {
+                width: 92%;
+
+                margin-top: -25px;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            .fleet-section {
+                width: 92%;
+
+                margin-top: 70px;
+            }
+
+            .section-top {
+                align-items: start;
+
+                flex-direction: column;
+            }
+
+            .section-top h2 {
+                font-size: 29px;
+            }
+
+            .cars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                width: 92%;
+            }
+
+            .cta h2 {
+                font-size: 29px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================== -->
+
+    <header class="navbar">
+
+
+        <a href="/" class="brand">
+
+            <span class="brand-main">
+                JAYASINGHA
+            </span>
+
+            <span class="brand-sub">
+                SIGNATURE & RENT-A-CAR
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            onclick="toggleMenu()"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
+
+
+        <nav
+            class="nav-links"
+            id="navLinks"
+        >
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/cars">
+                Cars
+            </a>
+
+            <a href="/trip-planner">
+                Smart Trip Planner
+            </a>
+
+            <a href="/booking">
+                Booking
+            </a>
+
+            <a href="/#why">
+                Why Us
+            </a>
+
+            <a href="/#contact">
+                Contact
+            </a>
+
+            <a
+                href="/booking"
+                class="nav-book"
+            >
+                Book Now
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <section class="page-hero">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                JAYASINGHA VEHICLE COLLECTION
+            </div>
+
+            <h1>
+                Find Your Perfect Ride.
+            </h1>
+
+            <p>
+                Explore our collection of comfortable, reliable
+                and affordable vehicles. Choose your car and
+                start your booking in a few simple steps.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         SEARCH / FILTER
+    ========================================================== -->
+
+    <div class="controls-wrap">
+
+        <div class="controls">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="carSearch"
+                    placeholder="Search a vehicle..."
+                    onkeyup="filterCars()"
+                >
+
+            </div>
+
+
+            <div class="filter-box">
+
+                <select
+                    id="carFilter"
+                    onchange="filterCars()"
+                >
+
+                    <option value="all">
+                        All Vehicles
+                    </option>
+
+                    <option value="hybrid">
+                        Hybrid
+                    </option>
+
+                    <option value="petrol">
+                        Petrol
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         FLEET
+    ========================================================== -->
+
+    <section class="fleet-section">
+
+
+        <div class="section-top">
+
+            <div>
+
+                <h2>
+                    Available Fleet
+                </h2>
+
+                <p>
+                    Select a vehicle that fits your journey.
+                </p>
+
+            </div>
+
+
+            <div class="car-count">
+
+                <span id="carCount">
+                    5
+                </span>
+                vehicles available
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="cars-grid"
+            id="carsGrid"
+        >
+
+
+            <!-- =================================================
+                 TOYOTA PRIUS
+            ================================================== -->
+
+            <article
+                class="car-card"
+                data-name="toyota prius"
+                data-type="hybrid"
+            >
+
+                <div class="image-area">
+
+                    <img
+                        src="{{ url_for('static', filename='images/prius-placeholder.svg') }}"
+                        alt="Toyota Prius"
+                    >
+
+                    <div class="availability" {% if cars_status.get('Toyota Prius') == 'Booked' %}style="background:#991b1b"{% endif %}>
+                        {{ 'BOOKED TODAY' if cars_status.get('Toyota Prius') == 'Booked' else 'AVAILABLE TODAY' }}
+                    </div>
+
+                    <div class="model-tag">
+                        HYBRID
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+
+                    <div class="card-title-row">
+
+                        <h3 class="card-title">
+                            Toyota Prius
+                        </h3>
+
+                        <div class="price">
+                            Rs. 12,000
+                        </div>
+
+                    </div>
+
+
+                    <p class="subtitle">
+                        Premium hybrid sedan for comfortable travel.
+                    </p>
+
+
+                    <div class="spec-grid">
+
+                        <div class="spec">
+                            👥 5 Seats
+                        </div>
+
+                        <div class="spec">
+                            ⛽ Hybrid
+                        </div>
+
+                        <div class="spec">
+                            ⚙️ Automatic
+                        </div>
+
+                        <div class="spec">
+                            ❄️ A/C
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="/booking?car=Toyota%20Prius"
+                        class="book-button"
+                    >
+                        Book Toyota Prius →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 TOYOTA AQUA
+            ================================================== -->
+
+            <article
+                class="car-card"
+                data-name="toyota aqua"
+                data-type="hybrid"
+            >
+
+                <div class="image-area">
+
+                    <div class="aqua-gallery">
+
+
+                        <img
+                            id="aquaImage"
+                            src="{{ url_for('static', filename='images/aqua-1.jpeg') }}"
+                            alt="Toyota Aqua"
+                        >
+
+
+                        <button
+                            type="button"
+                            class="gallery-btn gallery-prev"
+                            onclick="previousAqua()"
+                            aria-label="Previous Aqua photo"
+                        >
+                            ❮
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="gallery-btn gallery-next"
+                            onclick="nextAqua()"
+                            aria-label="Next Aqua photo"
+                        >
+                            ❯
+                        </button>
+
+
+                        <div class="photo-count">
+
+                            <span id="aquaCount">
+                                1
+                            </span>
+
+                            / 3
+
+                        </div>
+
+
+                        <div class="availability" {% if cars_status.get('Toyota Aqua') == 'Booked' %}style="background:#991b1b"{% endif %}>
+                        {{ 'BOOKED TODAY' if cars_status.get('Toyota Aqua') == 'Booked' else 'AVAILABLE TODAY' }}
+                    </div>
+
+
+                        <div class="model-tag">
+                            HYBRID
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+
+                    <div class="card-title-row">
+
+                        <h3 class="card-title">
+                            Toyota Aqua
+                        </h3>
+
+                        <div class="price">
+                            Rs. 10,000
+                        </div>
+
+                    </div>
+
+
+                    <p class="subtitle">
+                        Fuel-efficient hybrid designed for smooth city travel.
+                    </p>
+
+
+                    <div class="spec-grid">
+
+                        <div class="spec">
+                            👥 5 Seats
+                        </div>
+
+                        <div class="spec">
+                            ⛽ Hybrid
+                        </div>
+
+                        <div class="spec">
+                            ⚙️ Automatic
+                        </div>
+
+                        <div class="spec">
+                            ❄️ A/C
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="/booking?car=Toyota%20Aqua"
+                        class="book-button"
+                    >
+                        Book Toyota Aqua →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 HONDA GS1
+            ================================================== -->
+
+            <article
+                class="car-card"
+                data-name="honda gs1"
+                data-type="petrol"
+            >
+
+                <div class="image-area">
+
+                    <img
+                        src="{{ url_for('static', filename='images/honda-gs1-placeholder.svg') }}"
+                        alt="Honda GS1"
+                    >
+
+                    <div class="availability" {% if cars_status.get('Honda GS1') == 'Booked' %}style="background:#991b1b"{% endif %}>
+                        {{ 'BOOKED TODAY' if cars_status.get('Honda GS1') == 'Booked' else 'AVAILABLE TODAY' }}
+                    </div>
+
+                    <div class="model-tag">
+                        PETROL
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+
+                    <div class="card-title-row">
+
+                        <h3 class="card-title">
+                            Honda GS1
+                        </h3>
+
+                        <div class="price">
+                            Rs. 9,000
+                        </div>
+
+                    </div>
+
+
+                    <p class="subtitle">
+                        Practical and spacious vehicle for everyday journeys.
+                    </p>
+
+
+                    <div class="spec-grid">
+
+                        <div class="spec">
+                            👥 5 Seats
+                        </div>
+
+                        <div class="spec">
+                            ⛽ Petrol
+                        </div>
+
+                        <div class="spec">
+                            ⚙️ Automatic
+                        </div>
+
+                        <div class="spec">
+                            ❄️ A/C
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="/booking?car=Honda%20GS1"
+                        class="book-button"
+                    >
+                        Book Honda GS1 →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 HONDA VEZEL
+            ================================================== -->
+
+            <article
+                class="car-card"
+                data-name="honda vezel"
+                data-type="hybrid"
+            >
+
+                <div class="image-area">
+
+                    <img
+                        src="{{ url_for('static', filename='images/vezel-placeholder.svg') }}"
+                        alt="Honda Vezel"
+                    >
+
+                    <div class="availability" {% if cars_status.get('Honda Vezel') == 'Booked' %}style="background:#991b1b"{% endif %}>
+                        {{ 'BOOKED TODAY' if cars_status.get('Honda Vezel') == 'Booked' else 'AVAILABLE TODAY' }}
+                    </div>
+
+                    <div class="model-tag">
+                        HYBRID
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+
+                    <div class="card-title-row">
+
+                        <h3 class="card-title">
+                            Honda Vezel
+                        </h3>
+
+                        <div class="price">
+                            Rs. 12,000
+                        </div>
+
+                    </div>
+
+
+                    <p class="subtitle">
+                        Modern crossover with comfort for family journeys.
+                    </p>
+
+
+                    <div class="spec-grid">
+
+                        <div class="spec">
+                            👥 5 Seats
+                        </div>
+
+                        <div class="spec">
+                            ⛽ Hybrid
+                        </div>
+
+                        <div class="spec">
+                            ⚙️ Automatic
+                        </div>
+
+                        <div class="spec">
+                            ❄️ A/C
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="/booking?car=Honda%20Vezel"
+                        class="book-button"
+                    >
+                        Book Honda Vezel →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 HONDA CIVIC
+            ================================================== -->
+
+            <article
+                class="car-card"
+                data-name="honda civic"
+                data-type="petrol"
+            >
+
+                <div class="image-area">
+
+                    <img
+                        src="{{ url_for('static', filename='images/civic-placeholder.svg') }}"
+                        alt="Honda Civic"
+                    >
+
+                    <div class="availability" {% if cars_status.get('Honda Civic') == 'Booked' %}style="background:#991b1b"{% endif %}>
+                        {{ 'BOOKED TODAY' if cars_status.get('Honda Civic') == 'Booked' else 'AVAILABLE TODAY' }}
+                    </div>
+
+                    <div class="model-tag">
+                        PETROL
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+
+                    <div class="card-title-row">
+
+                        <h3 class="card-title">
+                            Honda Civic
+                        </h3>
+
+                        <div class="price">
+                            Rs. 12,000
+                        </div>
+
+                    </div>
+
+
+                    <p class="subtitle">
+                        Stylish and comfortable sedan for smooth travel.
+                    </p>
+
+
+                    <div class="spec-grid">
+
+                        <div class="spec">
+                            👥 5 Seats
+                        </div>
+
+                        <div class="spec">
+                            ⛽ Petrol
+                        </div>
+
+                        <div class="spec">
+                            ⚙️ Automatic
+                        </div>
+
+                        <div class="spec">
+                            ❄️ A/C
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="/booking?car=Honda%20Civic"
+                        class="book-button"
+                    >
+                        Book Honda Civic →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- EMPTY -->
+
+        <div
+            class="empty-state"
+            id="emptyState"
+        >
+
+            <h3>
+                No vehicles found
+            </h3>
+
+            <p>
+                Try another vehicle name or category.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =========================================================
+         CTA
+    ========================================================== -->
+
+    <section class="cta-section">
+
+        <div class="cta">
+
+            <h2>
+                Ready to Choose Your Car?
+            </h2>
+
+            <p>
+                Select your vehicle and complete the booking form.
+            </p>
+
+            <a
+                href="/booking"
+                class="cta-button"
+            >
+                Start Booking →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         WHATSAPP
+    ========================================================== -->
+
+    <a
+        href="https://wa.me/94772578592"
+        target="_blank"
+        class="whatsapp"
+        aria-label="WhatsApp"
+    >
+        💬
+    </a>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+
+        <div class="footer-grid">
+
+
+            <div>
+
+                <h3>
+                    JAYASINGHA SIGNATURE & RENT-A-CAR
+                </h3>
+
+                <p>
+                    Reliable and convenient vehicle rental
+                    services for your next journey.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <div class="footer-links">
+
+                    <a href="/">
+                        Home
+                    </a>
+
+                    <a href="/cars">
+                        Cars
+                    </a>
+
+                    <a href="/booking">
+                        Booking
+                    </a>
+
+                    <a href="/#contact">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    Phone: 0770067102
+                </p>
+
+                <p>
+                    WhatsApp: 0772578592
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Jayasingha Signature & Rent-a-Car.
+            All Rights Reserved.
+
+        </div>
+
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+
+        /* ================= MOBILE MENU ================= */
+
+        function toggleMenu() {
+
+            const navLinks =
+                document.getElementById("navLinks");
+
+            navLinks.classList.toggle("active");
+
+        }
+
+
+        /* ================= AQUA GALLERY ================= */
+
+        const aquaImages = [
+
+            "{{ url_for('static', filename='images/aqua-1.jpeg') }}",
+
+            "{{ url_for('static', filename='images/aqua-2.jpeg') }}",
+
+            "{{ url_for('static', filename='images/aqua-3.jpeg') }}"
+
+        ];
+
+
+        let aquaIndex = 0;
+
+
+        function showAquaImage() {
+
+            const image =
+                document.getElementById("aquaImage");
+
+            const counter =
+                document.getElementById("aquaCount");
+
+            if (!image || !counter) {
+                return;
+            }
+
+            image.style.opacity = "0.3";
+
+            setTimeout(function() {
+
+                image.src =
+                    aquaImages[aquaIndex];
+
+                counter.textContent =
+                    aquaIndex + 1;
+
+                image.style.opacity = "1";
+
+            }, 120);
+
+        }
+
+
+        function nextAqua() {
+
+            aquaIndex++;
+
+            if (
+                aquaIndex >=
+                aquaImages.length
+            ) {
+
+                aquaIndex = 0;
+
+            }
+
+            showAquaImage();
+
+        }
+
+
+        function previousAqua() {
+
+            aquaIndex--;
+
+            if (aquaIndex < 0) {
+
+                aquaIndex =
+                    aquaImages.length - 1;
+
+            }
+
+            showAquaImage();
+
+        }
+
+
+        /* ================= SEARCH + FILTER ================= */
+
+        function filterCars() {
+
+            const searchInput =
+                document
+                    .getElementById("carSearch")
+                    .value
+                    .toLowerCase()
+                    .trim();
+
+            const filter =
+                document
+                    .getElementById("carFilter")
+                    .value;
+
+            const cards =
+                document.querySelectorAll(".car-card");
+
+            let visibleCount = 0;
+
+
+            cards.forEach(function(card) {
+
+                const name =
+                    card
+                        .getAttribute("data-name")
+                        .toLowerCase();
+
+                const type =
+                    card
+                        .getAttribute("data-type")
+                        .toLowerCase();
+
+
+                const matchesSearch =
+                    name.includes(searchInput);
+
+
+                const matchesFilter =
+                    filter === "all" ||
+                    type === filter;
+
+
+                if (
+                    matchesSearch &&
+                    matchesFilter
+                ) {
+
+                    card.style.display = "block";
+
+                    visibleCount++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            document
+                .getElementById("carCount")
+                .textContent = visibleCount;
+
+
+            const emptyState =
+                document.getElementById("emptyState");
+
+
+            if (visibleCount === 0) {
+
+                emptyState.style.display =
+                    "block";
+
+            } else {
+
+                emptyState.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+        /* ================= CLOSE MOBILE MENU ================= */
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(function(link) {
+
+                link.addEventListener(
+                    "click",
+                    function() {
+
+                        document
+                            .getElementById("navLinks")
+                            .classList
+                            .remove("active");
+
+                    }
+                );
+
+            });
+
+
+    </script>
+
+
+</body>
+
+</html>

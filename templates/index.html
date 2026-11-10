@@ -1,0 +1,2771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jayasingha Signature & Rent-a-Car | Premium Car Rentals</title>
+
+    <meta name="description"
+          content="Discover Sri Lanka with Jayasingha Signature & Rent-a-Car. Find a suitable vehicle for your next journey with our smart trip planner.">
+
+    <meta name="theme-color" content="#080b12">
+
+    <style>
+        /* =========================================
+           GLOBAL SETTINGS
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080b12;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --gold: #d6b16d;
+            --gold-light: #e8ca91;
+            --dark: #080b12;
+            --dark-card: #111827;
+            --dark-soft: #172033;
+            --text: #f8fafc;
+            --muted: #a8b0bf;
+            --border: rgba(255, 255, 255, 0.10);
+        }
+
+        .container {
+            width: min(1180px, 90%);
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin-bottom: 38px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 14px;
+            font-size: clamp(29px, 4vw, 45px);
+            line-height: 1.2;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* =========================================
+           NAVIGATION BAR
+        ========================================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(8, 11, 18, 0.94);
+            border-bottom: 1px solid var(--border);
+
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .nav-inner {
+            min-height: 78px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            text-decoration: none;
+            min-width: 0;
+        }
+
+        .brand-mark {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+
+            color: var(--gold);
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .brand-text strong {
+            display: block;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .brand-text small {
+            display: block;
+            color: var(--gold);
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+        }
+
+        .nav-links a {
+            color: #dce1e9;
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links .nav-book {
+            padding: 12px 17px;
+
+            background: var(--gold);
+            border-radius: 4px;
+
+            color: #111;
+            font-weight: 800;
+        }
+
+        .nav-links .nav-book:hover {
+            background: var(--gold-light);
+            color: #111;
+        }
+
+        .menu-toggle {
+            display: none;
+
+            padding: 9px 12px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+
+            background: transparent;
+            color: white;
+
+            cursor: pointer;
+        }
+
+        /* =========================================
+           CINEMATIC HERO / VIDEO BACKGROUND
+        ========================================= */
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+
+            min-height: 650px;
+            min-height: min(780px, 84vh);
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+            background: #080b12;
+        }
+
+        .hero-video {
+            position: absolute;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center;
+
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+
+            z-index: -1;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(4, 7, 14, 0.96) 0%,
+                    rgba(4, 7, 14, 0.82) 40%,
+                    rgba(4, 7, 14, 0.40) 75%,
+                    rgba(4, 7, 14, 0.22) 100%
+                ),
+                linear-gradient(
+                    0deg,
+                    rgba(8, 11, 18, 0.70),
+                    transparent 45%
+                );
+        }
+
+        .hero-content {
+            width: min(1180px, 90%);
+            margin: 0 auto;
+            padding: 100px 0;
+
+            animation: heroEnter 1s ease-out both;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+
+            margin-bottom: 24px;
+            padding: 9px 13px;
+
+            border: 1px solid rgba(214, 177, 109, 0.45);
+            background: rgba(214, 177, 109, 0.08);
+
+            color: var(--gold-light);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            max-width: 780px;
+            margin-bottom: 24px;
+
+            font-size: clamp(44px, 7vw, 86px);
+            font-weight: 900;
+            letter-spacing: -2.5px;
+            line-height: 1.04;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-description {
+            max-width: 570px;
+            margin-bottom: 32px;
+
+            color: #d5dae4;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .button {
+            min-height: 50px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            padding: 14px 24px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            font-size: 13px;
+            font-weight: 800;
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .button-primary {
+            background: var(--gold);
+            color: #111;
+        }
+
+        .button-primary:hover {
+            background: var(--gold-light);
+        }
+
+        .button-outline {
+            border-color: rgba(255, 255, 255, 0.55);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .button-outline:hover {
+            border-color: var(--gold);
+            background: rgba(214, 177, 109, 0.1);
+        }
+
+        .hero-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 26px;
+
+            margin-top: 38px;
+
+            color: #dce1e9;
+            font-size: 12px;
+        }
+
+        .hero-points span::before {
+            content: "✓";
+            margin-right: 8px;
+            color: var(--gold);
+            font-weight: 900;
+        }
+
+        @keyframes heroEnter {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================
+           QUICK BENEFITS
+        ========================================= */
+
+        .benefits {
+            position: relative;
+            z-index: 2;
+
+            background: #111827;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            padding: 28px 22px;
+        }
+
+        .benefit + .benefit {
+            border-left: 1px solid var(--border);
+        }
+
+        .benefit-icon {
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid rgba(214, 177, 109, 0.35);
+            border-radius: 50%;
+
+            color: var(--gold);
+            font-size: 19px;
+        }
+
+        .benefit h3 {
+            margin-bottom: 3px;
+            font-size: 14px;
+        }
+
+        .benefit p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* =========================================
+           SMART TRIP PLANNER
+        ========================================= */
+
+        .planner-section {
+            background:
+                radial-gradient(
+                    ellipse at top right,
+                    rgba(214, 177, 109, 0.06),
+                    transparent 45%
+                ),
+                var(--dark);
+        }
+
+        .planner-layout {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 35px;
+            align-items: start;
+        }
+
+        .planner-intro {
+            padding-top: 8px;
+        }
+
+        .planner-intro h2 {
+            margin-bottom: 18px;
+
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.2;
+        }
+
+        .planner-intro h2 span {
+            color: var(--gold);
+        }
+
+        .planner-intro > p {
+            margin-bottom: 24px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .planner-perks {
+            display: grid;
+            gap: 15px;
+        }
+
+        .planner-perk {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .perk-check {
+            width: 25px;
+            height: 25px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+            background: rgba(214, 177, 109, 0.13);
+
+            color: var(--gold);
+            font-size: 12px;
+        }
+
+        .planner-perk strong {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 13px;
+        }
+
+        .planner-perk p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .planner-card {
+            padding: 30px;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.035),
+                    rgba(255, 255, 255, 0.01)
+                ),
+                #101624;
+
+            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.23);
+        }
+
+        .planner-card-heading {
+            margin-bottom: 25px;
+        }
+
+        .planner-card-heading h3 {
+            margin-bottom: 5px;
+            font-size: 21px;
+        }
+
+        .planner-card-heading p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .field {
+            min-width: 0;
+        }
+
+        .field-full {
+            grid-column: 1 / -1;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 7px;
+
+            color: #e6e9ef;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            min-height: 47px;
+
+            padding: 12px 13px;
+            border: 1px solid #313a4c;
+            border-radius: 5px;
+            outline: none;
+
+            background: #0b101c;
+            color: #f8fafc;
+
+            font-size: 13px;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(214, 177, 109, 0.09);
+        }
+
+        .field input::placeholder {
+            color: #7f899a;
+        }
+
+        .field input[type="date"] {
+            color-scheme: dark;
+        }
+
+        .field-hint {
+            margin-top: 6px;
+            color: #8791a3;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        .checkbox-field {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            padding: 13px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .checkbox-field input {
+            width: 17px;
+            height: 17px;
+            accent-color: var(--gold);
+        }
+
+        .checkbox-field label {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .planner-submit {
+            width: 100%;
+            margin-top: 22px;
+        }
+
+        .form-message {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+
+            border-radius: 5px;
+            background: rgba(239, 68, 68, 0.10);
+            border: 1px solid rgba(239, 68, 68, 0.35);
+
+            color: #fecaca;
+            font-size: 12px;
+        }
+
+        .form-message.show {
+            display: block;
+        }
+
+        /* =========================================
+           TRIP PLANNER RESULTS
+        ========================================= */
+
+        .planner-results {
+            margin-top: 35px;
+        }
+
+        .results-heading {
+            margin-bottom: 20px;
+        }
+
+        .results-heading h3 {
+            margin-bottom: 7px;
+            font-size: 23px;
+        }
+
+        .results-heading p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .welcome-state {
+            padding: 28px 20px;
+
+            border: 1px dashed #394255;
+            border-radius: 8px;
+
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .welcome-state .welcome-icon {
+            display: block;
+            margin-bottom: 13px;
+            font-size: 32px;
+        }
+
+        .welcome-state h4 {
+            margin-bottom: 7px;
+            color: #fff;
+            font-size: 17px;
+        }
+
+        .welcome-state p {
+            font-size: 12px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 17px;
+        }
+
+        .car-result {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+            border-radius: 8px;
+
+            background: #111827;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .car-result:hover {
+            transform: translateY(-4px);
+            border-color: rgba(214, 177, 109, 0.55);
+        }
+
+        .car-image {
+            position: relative;
+            height: 170px;
+            overflow: hidden;
+            background: #202a3a;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.35s ease;
+        }
+
+        .car-result:hover .car-image img {
+            transform: scale(1.045);
+        }
+
+        .car-info {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 17px;
+        }
+
+        .car-topline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .car-topline h3 {
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .rate {
+            flex-shrink: 0;
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .rate small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+        .car-desc {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .car-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+
+            margin: 15px 0;
+        }
+
+        .car-tags span {
+            padding: 5px 7px;
+            border-radius: 3px;
+
+            background: #202a3a;
+            color: #dce1e9;
+
+            font-size: 9px;
+        }
+
+        .car-tags span:last-child {
+            color: var(--gold-light);
+        }
+
+        .book-link {
+            display: block;
+            width: 100%;
+
+            margin-top: auto;
+            padding: 11px 10px;
+
+            border: 1px solid rgba(214, 177, 109, 0.55);
+            border-radius: 4px;
+
+            color: var(--gold-light);
+            text-align: center;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 800;
+
+            transition: background 0.2s ease;
+        }
+
+        .book-link:hover {
+            background: rgba(214, 177, 109, 0.12);
+        }
+
+        .results-notice {
+            margin-top: 18px;
+            color: #8791a3;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           FEATURED FLEET
+        ========================================= */
+
+        .fleet-section {
+            background: #0c111d;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .fleet-card {
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+            border-radius: 9px;
+
+            background: #111827;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .fleet-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(214, 177, 109, 0.55);
+        }
+
+        .fleet-image {
+            height: 220px;
+            overflow: hidden;
+            background: #202a3a;
+        }
+
+        .fleet-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.35s ease;
+        }
+
+        .fleet-card:hover .fleet-image img {
+            transform: scale(1.04);
+        }
+
+        .fleet-body {
+            padding: 22px;
+        }
+
+        .fleet-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .fleet-top h3 {
+            font-size: 18px;
+        }
+
+        .fleet-price {
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .fleet-price small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+        .fleet-description {
+            margin: 12px 0 18px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .fleet-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .fleet-specs span {
+            padding: 6px 9px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+
+            color: #dce1e9;
+            font-size: 10px;
+        }
+
+        .fleet-book {
+            display: block;
+            padding: 12px;
+
+            border-radius: 4px;
+            background: var(--gold);
+
+            color: #111;
+            text-align: center;
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .fleet-book:hover {
+            background: var(--gold-light);
+        }
+
+        .no-cars {
+            grid-column: 1 / -1;
+            padding: 28px;
+
+            border: 1px dashed #394255;
+            border-radius: 8px;
+
+            color: var(--muted);
+            text-align: center;
+        }
+
+        /* =========================================
+           ABOUT
+        ========================================= */
+
+        .about-section {
+            background: var(--dark);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-visual {
+            position: relative;
+            min-height: 330px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(214, 177, 109, 0.30);
+            border-radius: 10px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(214, 177, 109, 0.16),
+                    transparent 48%
+                ),
+                linear-gradient(135deg, #172033, #080b12);
+        }
+
+        .about-visual::before,
+        .about-visual::after {
+            content: "";
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            border: 1px solid rgba(214, 177, 109, 0.15);
+            border-radius: 50%;
+        }
+
+        .about-visual::after {
+            width: 290px;
+            height: 290px;
+        }
+
+        .about-emblem {
+            position: relative;
+            z-index: 1;
+
+            padding: 25px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+
+            color: var(--gold);
+            font-size: 46px;
+            font-weight: 900;
+        }
+
+        .about-copy h2 {
+            margin-bottom: 20px;
+            font-size: clamp(29px, 4vw, 43px);
+            line-height: 1.2;
+        }
+
+        .about-copy h2 span {
+            color: var(--gold);
+        }
+
+        .about-copy > p {
+            margin-bottom: 17px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .about-points {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .about-points div {
+            padding: 13px;
+
+            border: 1px solid var(--border);
+            border-radius: 5px;
+
+            background: #111827;
+            color: #e8ebf1;
+
+            font-size: 12px;
+        }
+
+        .about-points span {
+            margin-right: 7px;
+            color: var(--gold);
+        }
+
+        /* =========================================
+           CONTACT SECTION
+        ========================================= */
+
+        .contact-section {
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    rgba(214, 177, 109, 0.06),
+                    transparent 60%
+                ),
+                #0c111d;
+        }
+
+        .contact-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+
+            padding: 38px;
+
+            border: 1px solid rgba(214, 177, 109, 0.35);
+            border-radius: 9px;
+
+            background: linear-gradient(
+                110deg,
+                rgba(214, 177, 109, 0.08),
+                rgba(255, 255, 255, 0.015)
+            );
+        }
+
+        .contact-copy {
+            max-width: 650px;
+        }
+
+        .contact-copy h2 {
+            margin-bottom: 12px;
+            font-size: clamp(27px, 4vw, 39px);
+            line-height: 1.2;
+        }
+
+        .contact-copy p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .contact-actions {
+            display: flex;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+
+            margin-top: 27px;
+
+            color: #dce1e9;
+            font-size: 13px;
+        }
+
+        .contact-details a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+            padding: 30px 0;
+
+            border-top: 1px solid var(--border);
+            background: #080b12;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer p {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 19px;
+        }
+
+        .footer-links a {
+            color: #dce1e9;
+            font-size: 11px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 960px) {
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .planner-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .planner-intro {
+                max-width: 680px;
+            }
+
+            .fleet-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-grid {
+                gap: 35px;
+            }
+
+            .result-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .contact-box {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .container {
+                width: 90%;
+            }
+
+            .section {
+                padding: 68px 0;
+            }
+
+            .nav-inner {
+                min-height: 70px;
+            }
+
+            .brand-mark {
+                width: 39px;
+                height: 39px;
+            }
+
+            .brand-text strong {
+                font-size: 12px;
+            }
+
+            .brand-text small {
+                font-size: 9px;
+                letter-spacing: 1.4px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+
+                display: none;
+                align-items: stretch;
+                flex-direction: column;
+                gap: 0;
+
+                padding: 8px 5% 18px;
+
+                border-bottom: 1px solid var(--border);
+                background: #0b101c;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 13px 5px;
+            }
+
+            .nav-links .nav-book {
+                margin-top: 7px;
+                padding: 12px;
+                text-align: center;
+            }
+
+            .hero {
+                min-height: 690px;
+                min-height: 80svh;
+            }
+
+            .hero-video {
+                object-position: 60% center;
+            }
+
+            .hero-overlay {
+                background:
+                    linear-gradient(
+                        90deg,
+                        rgba(4, 7, 14, 0.91),
+                        rgba(4, 7, 14, 0.63)
+                    ),
+                    linear-gradient(
+                        0deg,
+                        rgba(8, 11, 18, 0.65),
+                        transparent
+                    );
+            }
+
+            .hero-content {
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                font-size: clamp(42px, 11vw, 63px);
+                letter-spacing: -1.5px;
+            }
+
+            .hero-kicker {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-actions .button {
+                width: 100%;
+            }
+
+            .hero-points {
+                gap: 12px;
+                flex-direction: column;
+            }
+
+            .benefit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit {
+                padding: 20px 5%;
+            }
+
+            .benefit + .benefit {
+                border-top: 1px solid var(--border);
+                border-left: 0;
+            }
+
+            .planner-card {
+                padding: 21px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .field-full {
+                grid-column: auto;
+            }
+
+            .result-grid,
+            .fleet-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .car-image {
+                height: 225px;
+            }
+
+            .fleet-image {
+                height: 235px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .about-visual {
+                min-height: 260px;
+            }
+
+            .about-points {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-box {
+                padding: 25px;
+            }
+
+            .contact-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .contact-actions .button {
+                width: 100%;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
+
+    <header class="navbar">
+
+        <div class="container nav-inner">
+
+            <a href="/" class="brand">
+
+                <span class="brand-mark">JS</span>
+
+                <span class="brand-text">
+                    <strong>JAYASINGHA SIGNATURE</strong>
+                    <small>RENT-A-CAR</small>
+                </span>
+
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+
+                ☰
+
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+
+                <a href="#home">Home</a>
+                <a href="#planner">Trip Planner</a>
+                <a href="#cars">Our Cars</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+                <a href="/booking" class="nav-book">Book Now →</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         HERO SECTION
+    ========================================= -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <video
+                class="hero-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-hidden="true">
+
+                <source
+                    src="{{ url_for('static', filename='videos/car-bg.mp4') }}"
+                    type="video/mp4">
+
+            </video>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <span class="hero-kicker">
+                    JAYASINGHA SIGNATURE &amp; RENT-A-CAR
+                </span>
+
+                <h1>
+                    Every Journey<br>
+                    <span>Deserves More.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Discover Sri Lanka with comfort, style and confidence.
+                    Find the right vehicle for your next journey with
+                    Jayasingha Signature &amp; Rent-a-Car.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#cars" class="button button-primary">
+                        Explore Our Cars →
+                    </a>
+
+                    <a href="#planner" class="button button-outline">
+                        Plan Your Journey
+                    </a>
+
+                </div>
+
+                <div class="hero-points">
+
+                    <span>Comfortable Journeys</span>
+                    <span>Vehicle Choices</span>
+                    <span>Simple Online Booking</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             BENEFITS
+        ========================================= -->
+
+        <section class="benefits">
+
+            <div class="container benefit-grid">
+
+                <article class="benefit">
+
+                    <div class="benefit-icon">🚘</div>
+
+                    <div>
+                        <h3>Choose Your Vehicle</h3>
+                        <p>Compare available vehicles for your journey.</p>
+                    </div>
+
+                </article>
+
+                <article class="benefit">
+
+                    <div class="benefit-icon">📅</div>
+
+                    <div>
+                        <h3>Plan Your Trip</h3>
+                        <p>Choose your dates and trip preferences.</p>
+                    </div>
+
+                </article>
+
+                <article class="benefit">
+
+                    <div class="benefit-icon">📲</div>
+
+                    <div>
+                        <h3>Easy Booking</h3>
+                        <p>Continue to our booking page when ready.</p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             SMART TRIP PLANNER
+        ========================================= -->
+
+        <section class="section planner-section" id="planner">
+
+            <div class="container">
+
+                <div class="planner-layout">
+
+                    <div class="planner-intro">
+
+                        <span class="eyebrow">Smart Trip Planner</span>
+
+                        <h2>
+                            Find the Right Car<br>
+                            for <span>Your Journey.</span>
+                        </h2>
+
+                        <p>
+                            Tell us about your journey. Our trip planner
+                            compares the listed vehicles with your budget,
+                            passenger count and travel preferences.
+                        </p>
+
+                        <div class="planner-perks">
+
+                            <div class="planner-perk">
+
+                                <span class="perk-check">✓</span>
+
+                                <div>
+                                    <strong>Budget-Based Suggestions</strong>
+                                    <p>Compare daily rates against your budget.</p>
+                                </div>
+
+                            </div>
+
+                            <div class="planner-perk">
+
+                                <span class="perk-check">✓</span>
+
+                                <div>
+                                    <strong>Passenger Preferences</strong>
+                                    <p>Find cars with enough listed seats.</p>
+                                </div>
+
+                            </div>
+
+                            <div class="planner-perk">
+
+                                <span class="perk-check">✓</span>
+
+                                <div>
+                                    <strong>Trip-Based Recommendations</strong>
+                                    <p>Choose your purpose and preferred vehicle type.</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="planner-card">
+
+                        <div class="planner-card-heading">
+
+                            <h3>Plan Your Trip</h3>
+
+                            <p>
+                                Complete these details to compare vehicles.
+                            </p>
+
+                        </div>
+
+
+                        <form id="plannerForm" novalidate>
+
+                            <div class="form-grid">
+
+                                <div class="field">
+
+                                    <label for="pickupDate">
+                                        Pickup Date
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="pickupDate"
+                                        name="pickupDate">
+
+                                </div>
+
+
+                                <div class="field">
+
+                                    <label for="returnDate">
+                                        Return Date
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="returnDate"
+                                        name="returnDate">
+
+                                </div>
+
+
+                                <div class="field">
+
+                                    <label for="purpose">
+                                        Purpose of Journey
+                                    </label>
+
+                                    <select id="purpose" name="purpose">
+
+                                        <option value="city">
+                                            City Travel
+                                        </option>
+
+                                        <option value="family">
+                                            Family Trip
+                                        </option>
+
+                                        <option value="long">
+                                            Long-Distance Travel
+                                        </option>
+
+                                        <option value="business">
+                                            Business Travel
+                                        </option>
+
+                                        <option value="budget">
+                                            Budget Travel
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="field">
+
+                                    <label for="passengers">
+                                        Number of Passengers
+                                    </label>
+
+                                    <select id="passengers" name="passengers">
+
+                                        <option value="1">1 Passenger</option>
+                                        <option value="2" selected>2 Passengers</option>
+                                        <option value="3">3 Passengers</option>
+                                        <option value="4">4 Passengers</option>
+                                        <option value="5">5 Passengers</option>
+                                        <option value="6">6 Passengers</option>
+                                        <option value="7">7 Passengers</option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="field field-full">
+
+                                    <label for="budget">
+                                        Daily Budget (LKR)
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="budget"
+                                        name="budget"
+                                        min="0"
+                                        step="500"
+                                        placeholder="Enter your daily budget, e.g. 10000">
+
+                                    <p class="field-hint">
+                                        Enter 0 or leave blank to compare all listed prices.
+                                        Prices are demo values and may change.
+                                    </p>
+
+                                </div>
+
+
+                                <div class="field field-full">
+
+                                    <div class="checkbox-field">
+
+                                        <input
+                                            type="checkbox"
+                                            id="hybridPriority"
+                                            name="hybridPriority">
+
+                                        <label for="hybridPriority">
+                                            Prefer a hybrid vehicle
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="form-message"
+                                id="formMessage"
+                                role="alert">
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="button button-primary planner-submit">
+
+                                Find My Best Match →
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PLANNER RESULTS -->
+
+                <div class="planner-results" id="plannerResults">
+
+                    <div class="results-heading">
+
+                        <h3>Your Vehicle Recommendations</h3>
+
+                        <p id="resultsIntro">
+                            Complete the trip planner above to see suitable vehicles.
+                        </p>
+
+                    </div>
+
+
+                    <div class="welcome-state" id="welcomeState">
+
+                        <span class="welcome-icon">🚗</span>
+
+                        <h4>Your next journey starts here.</h4>
+
+                        <p>
+                            Choose your preferences above and discover
+                            which listed vehicles match your trip.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="result-grid"
+                        id="resultCards"
+                        hidden>
+                    </div>
+
+
+                    <p
+                        class="results-notice"
+                        id="resultsNotice"
+                        aria-live="polite">
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             OUR CAR FLEET
+        ========================================= -->
+
+        <section class="section fleet-section" id="cars">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="eyebrow">Our Fleet</span>
+
+                    <h2>
+                        Discover Your Next Ride.
+                    </h2>
+
+                    <p>
+                        Explore the vehicles listed in our rental fleet.
+                        Select a vehicle to continue to the booking page.
+                    </p>
+
+                </div>
+
+
+                <div class="fleet-grid">
+
+                    {% if car_data %}
+
+                        {% for car in car_data %}
+
+                            <article class="fleet-card">
+
+                                <div class="fleet-image">
+
+                                    <img
+                                        src="{{ url_for('static', filename=car.image) }}"
+                                        alt="{{ car.name }}"
+                                        loading="lazy"
+                                        onerror="this.style.display='none';">
+
+                                </div>
+
+
+                                <div class="fleet-body">
+
+                                    <div class="fleet-top">
+
+                                        <h3>{{ car.name }}</h3>
+
+                                        <div class="fleet-price">
+
+                                            Rs. {{ "{:,.0f}".format(car.price|float) }}
+
+                                            <small>per day</small>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <p class="fleet-description">
+                                        {{ car.description }}
+                                    </p>
+
+
+                                    <div class="fleet-specs">
+
+                                        <span>
+                                            {{ car.type|default('Standard')|title }}
+                                        </span>
+
+                                        <span>
+                                            {{ car.seats|default(4) }} Seats
+                                        </span>
+
+                                    </div>
+
+
+                                    <a
+                                        class="fleet-book"
+                                        href="/booking?car={{ car.name|urlencode }}">
+
+                                        Book This Vehicle →
+
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="no-cars">
+
+                            <h3>Vehicles are currently unavailable.</h3>
+
+                            <p>
+                                Please contact us for information about our
+                                available rental vehicles.
+                            </p>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             ABOUT US
+        ========================================= -->
+
+        <section class="section about-section" id="about">
+
+            <div class="container about-grid">
+
+                <div class="about-visual">
+
+                    <div class="about-emblem">JS</div>
+
+                </div>
+
+
+                <div class="about-copy">
+
+                    <span class="eyebrow">About Us</span>
+
+                    <h2>
+                        Your Journey.<br>
+                        <span>Our Commitment.</span>
+                    </h2>
+
+                    <p>
+                        Jayasingha Signature &amp; Rent-a-Car helps you
+                        explore your vehicle options for your next journey
+                        around Sri Lanka.
+                    </p>
+
+                    <p>
+                        Use our trip planner to compare listed vehicles,
+                        check estimated daily rates and continue to the
+                        booking page for your preferred car.
+                    </p>
+
+                    <div class="about-points">
+
+                        <div>
+                            <span>✓</span>
+                            Multiple Vehicle Options
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Simple Booking Process
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Trip Planning Tools
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Personal Assistance
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CONTACT
+        ========================================= -->
+
+        <section class="section contact-section" id="contact">
+
+            <div class="container">
+
+                <div class="contact-box">
+
+                    <div class="contact-copy">
+
+                        <span class="eyebrow">Get in Touch</span>
+
+                        <h2>
+                            Ready for Your Next Journey?
+                        </h2>
+
+                        <p>
+                            Contact us for vehicle enquiries and booking assistance.
+                            Our team can help you discuss your travel requirements.
+                        </p>
+
+                        <div class="contact-details">
+
+                            <p>
+                                Phone:
+                                <a href="tel:+94770067102">
+                                    077 006 7102
+                                </a>
+                            </p>
+
+                            <p>
+                                WhatsApp:
+                                <a
+                                    href="https://wa.me/94772578592"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+
+                                    077 257 8592
+
+                                </a>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-actions">
+
+                        <a
+                            class="button button-primary"
+                            href="https://wa.me/94772578592"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            Chat on WhatsApp →
+
+                        </a>
+
+                        <a
+                            class="button button-outline"
+                            href="/booking">
+
+                            Make a Booking
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-inner">
+
+            <p>
+                © <span id="year"></span>
+                Jayasingha Signature &amp; Rent-a-Car.
+                Made for better journeys in Sri Lanka.
+            </p>
+
+            <div class="footer-links">
+
+                <a href="#home">Home</a>
+                <a href="#planner">Trip Planner</a>
+                <a href="#cars">Our Cars</a>
+                <a href="/booking">Booking</a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+        "use strict";
+
+        /*
+         * Flask passes car_data from app.py.
+         * Each car should contain:
+         * name, price, description, type, seats and image.
+         */
+
+            const carData = {{ car_data | tojson }};
+
+        /* =========================================
+           MOBILE NAVIGATION
+        ========================================= */
+
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+
+        });
+
+
+        navLinks.querySelectorAll("a").forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("open");
+
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+
+            });
+
+        });
+
+
+        /* =========================================
+           CURRENT YEAR
+        ========================================= */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        /* =========================================
+           TRIP PLANNER ELEMENTS
+        ========================================= */
+
+        const form = document.getElementById("plannerForm");
+
+        const pickupInput = document.getElementById("pickupDate");
+
+        const returnInput = document.getElementById("returnDate");
+
+        const budgetInput = document.getElementById("budget");
+
+        const results = document.getElementById("resultCards");
+
+        const welcomeState = document.getElementById("welcomeState");
+
+        const resultsIntro = document.getElementById("resultsIntro");
+
+        const resultsNotice = document.getElementById("resultsNotice");
+
+        const formMessage = document.getElementById("formMessage");
+
+
+        /* =========================================
+           DATE VALIDATION
+        ========================================= */
+
+        function getTodayText() {
+
+            const today = new Date();
+
+            const year = today.getFullYear();
+
+            const month = String(
+                today.getMonth() + 1
+            ).padStart(2, "0");
+
+            const day = String(
+                today.getDate()
+            ).padStart(2, "0");
+
+            return `${year}-${month}-${day}`;
+
+        }
+
+
+        const todayText = getTodayText();
+
+        pickupInput.min = todayText;
+
+        returnInput.min = todayText;
+
+
+        pickupInput.addEventListener("change", function () {
+
+            returnInput.min = pickupInput.value || todayText;
+
+            if (
+                returnInput.value &&
+                pickupInput.value &&
+                returnInput.value <= pickupInput.value
+            ) {
+                returnInput.value = "";
+            }
+
+        });
+
+
+        /* =========================================
+           BOOKING LINK
+        ========================================= */
+
+        function bookingLink(carName) {
+
+            const params = new URLSearchParams();
+
+            params.set("car", carName);
+
+            if (pickupInput.value) {
+
+                params.set("pickup", pickupInput.value);
+
+            }
+
+            if (returnInput.value) {
+
+                params.set("return_date", returnInput.value);
+
+            }
+
+            return "/booking?" + params.toString();
+
+        }
+
+
+        /* =========================================
+           CREATE A RECOMMENDED CAR CARD
+        ========================================= */
+
+        function makeCard(car, index, budget) {
+
+            const article = document.createElement("article");
+
+            article.className = "car-result";
+
+
+            const imageWrap = document.createElement("div");
+
+            imageWrap.className = "car-image";
+
+
+            const img = document.createElement("img");
+
+            img.src = "/static/" + String(car.image || "");
+
+            img.alt = String(car.name || "Rental vehicle");
+
+            img.loading = "lazy";
+
+            img.onerror = function () {
+
+                this.style.display = "none";
+
+            };
+
+
+            imageWrap.appendChild(img);
+
+
+            const info = document.createElement("div");
+
+            info.className = "car-info";
+
+
+            const top = document.createElement("div");
+
+            top.className = "car-topline";
+
+
+            const title = document.createElement("h3");
+
+            title.textContent = car.name || "Rental vehicle";
+
+
+            const rate = document.createElement("div");
+
+            rate.className = "rate";
+
+
+            const price = Number(car.price) || 0;
+
+            rate.textContent = "Rs. " + price.toLocaleString("en-LK");
+
+
+            const perDay = document.createElement("small");
+
+            perDay.textContent = "per day";
+
+            rate.appendChild(perDay);
+
+            top.append(title, rate);
+
+
+            const desc = document.createElement("p");
+
+            desc.className = "car-desc";
+
+            desc.textContent =
+                car.description || "Contact us for vehicle details.";
+
+
+            const tags = document.createElement("div");
+
+            tags.className = "car-tags";
+
+
+            const carType = String(car.type || "standard");
+
+
+            const seats = Number(car.seats) || 4;
+
+
+            const tagTexts = [
+
+                carType.toUpperCase(),
+
+                seats + " seats",
+
+                budget && price <= budget
+                    ? "Within budget"
+                    : (budget ? "Over budget" : "Budget flexible")
+
+            ];
+
+
+            tagTexts.forEach(function (text) {
+
+                const tag = document.createElement("span");
+
+                tag.textContent = text;
+
+                tags.appendChild(tag);
+
+            });
+
+
+            const link = document.createElement("a");
+
+            link.className = "book-link";
+
+            link.href = bookingLink(car.name || "");
+
+            link.textContent = index === 0
+                ? "Choose this best match →"
+                : "Choose this vehicle →";
+
+
+            info.append(top, desc, tags, link);
+
+            article.append(imageWrap, info);
+
+            return article;
+
+        }
+
+
+        /* =========================================
+           PLAN YOUR TRIP
+        ========================================= */
+
+        form.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            formMessage.classList.remove("show");
+
+            formMessage.textContent = "";
+
+
+            const pickup = pickupInput.value;
+
+            const returnDate = returnInput.value;
+
+
+            /* Validate trip dates */
+
+            if ((pickup && !returnDate) || (!pickup && returnDate)) {
+
+                formMessage.textContent =
+                    "Please choose both trip dates, or leave both dates blank.";
+
+                formMessage.classList.add("show");
+
+                return;
+
+            }
+
+
+            if (pickup && pickup < todayText) {
+
+                formMessage.textContent =
+                    "Pickup date cannot be in the past.";
+
+                formMessage.classList.add("show");
+
+                return;
+
+            }
+
+
+            if (pickup && returnDate && returnDate <= pickup) {
+
+                formMessage.textContent =
+                    "Return date must be after the pickup date.";
+
+                formMessage.classList.add("show");
+
+                return;
+
+            }
+
+
+            /* Validate budget */
+
+            const budgetText = budgetInput.value.trim();
+
+            const budget = budgetText === ""
+                ? 0
+                : Number(budgetText);
+
+
+            if (
+                !Number.isFinite(budget) ||
+                budget < 0
+            ) {
+
+                formMessage.textContent =
+                    "Please enter a valid daily budget.";
+
+                formMessage.classList.add("show");
+
+                return;
+
+            }
+
+
+            if (!Array.isArray(carData) || carData.length === 0) {
+
+                results.replaceChildren();
+
+                results.hidden = true;
+
+                welcomeState.hidden = false;
+
+                resultsIntro.textContent =
+                    "Vehicle recommendations are currently unavailable.";
+
+                resultsNotice.textContent =
+                    "Please contact us for information about available vehicles.";
+
+                return;
+
+            }
+
+
+            const purpose =
+                document.getElementById("purpose").value;
+
+
+            const passengers =
+                Number(document.getElementById("passengers").value);
+
+
+            const hybridPriority =
+                document.getElementById("hybridPriority").checked;
+
+
+            /* Score each listed vehicle */
+
+            const scored = carData.map(function (car) {
+
+                let score = 0;
+
+                const carName = String(car.name || "");
+
+                const carType = String(car.type || "").toLowerCase();
+
+                const price = Number(car.price) || 0;
+
+                const seats = Number(car.seats) || 0;
+
+
+                /* Budget */
+
+                if (budget === 0 || price <= budget) {
+
+                    score += 5;
+
+                } else {
+
+                    score -= 4 + (price - budget) / 1000;
+
+                }
+
+
+                /* Hybrid preference */
+
+                if (
+                    hybridPriority &&
+                    carType.includes("hybrid")
+                ) {
+
+                    score += 3;
+
+                }
+
+
+                /* Passenger capacity */
+
+                if (seats >= passengers) {
+
+                    score += 2;
+
+                } else {
+
+                    score -= 5;
+
+                }
+
+
+                /* Trip purpose */
+
+                if (purpose === "city") {
+
+                    if (carName === "Toyota Aqua") {
+                        score += 4;
+                    }
+
+                    if (carName === "Toyota Prius") {
+                        score += 1;
+                    }
+
+                } else if (
+                    purpose === "family" ||
+                    purpose === "long"
+                ) {
+
+                    if (carName === "Honda Vezel") {
+                        score += 4;
+                    }
+
+                    if (carName === "Toyota Prius") {
+                        score += 3;
+                    }
+
+                } else if (purpose === "business") {
+
+                    if (carName === "Toyota Prius") {
+                        score += 4;
+                    }
+
+                    if (carName === "Honda Civic") {
+                        score += 3;
+                    }
+
+                    if (carName === "Honda Vezel") {
+                        score += 2;
+                    }
+
+                } else if (purpose === "budget") {
+
+                    if (carName === "Honda GS1") {
+                        score += 5;
+                    }
+
+                    if (carName === "Toyota Aqua") {
+                        score += 3;
+                    }
+
+                }
+
+
+                return {
+                    ...car,
+                    score: score
+                };
+
+            }).sort(function (a, b) {
+
+                return b.score - a.score ||
+                    Number(a.price) - Number(b.price);
+
+            });
+
+
+            /* Prefer vehicles within budget */
+
+            const withinBudget = budget
+                ? scored.filter(function (car) {
+
+                    return Number(car.price) <= budget;
+
+                })
+                : scored;
+
+
+            const recommendations = (
+
+                withinBudget.length > 0
+                    ? withinBudget
+                    : scored
+
+            ).slice(0, 3);
+
+
+            /* Render results */
+
+            results.replaceChildren(
+
+                ...recommendations.map(function (car, index) {
+
+                    return makeCard(car, index, budget);
+
+                })
+
+            );
+
+
+            results.hidden = false;
+
+            welcomeState.hidden = true;
+
+
+            if (withinBudget.length > 0) {
+
+                resultsIntro.textContent =
+                    `Best matches for ${passengers} passenger` +
+                    `${passengers === 1 ? "" : "s"} — ranked for your preferences.`;
+
+            } else {
+
+                resultsIntro.textContent =
+                    "No listed vehicle fits your selected daily budget. " +
+                    "Compare these alternatives or increase your budget.";
+
+            }
+
+
+            resultsNotice.textContent =
+
+                "Rates shown are demo values and may change. " +
+
+                (
+                    pickup && returnDate
+                        ? "Your selected dates will be carried into booking. "
+                        : "You can add your dates later on the booking page. "
+                ) +
+
+                "These recommendations do not confirm availability. " +
+                "Confirm vehicle availability before your trip.";
+
+
+            /* Scroll to recommendations */
+
+            document.getElementById("plannerResults").scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "start"
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

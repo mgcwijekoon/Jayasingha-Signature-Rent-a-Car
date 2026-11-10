@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Jayasingha Rent-a-Car</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .navbar {
+            background: #111827;
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .home-link {
+            color: white;
+            text-decoration: none;
+            background: #374151;
+            padding: 10px 16px;
+            border-radius: 8px;
+          
+        }
+        
+
+        .container {
+            width: 94%;
+            max-width: 1400px;
+            margin: 35px auto;
+        }
+
+        .title-section {
+            margin-bottom: 25px;
+        }
+
+        .title-section h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .title-section p {
+            color: #6b7280;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .card h3 {
+            color: #6b7280;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .card .number {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .filters form {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filters input,
+        .filters select {
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .filter-button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #111827;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .clear-button {
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .table-container {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1100px;
+        }
+
+        th,
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+        }
+
+        th {
+            background: #111827;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .status-form {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .status-form select {
+            padding: 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+        }
+
+        .update-btn {
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: #111827;
+            color: white;
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: #991b1b;
+            color: white;
+            cursor: pointer;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .confirmed {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .cancelled {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        @media (max-width: 900px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .title-section h1 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+            Jayasingha Rent-a-Car
+        </div>
+
+        <a href="/" class="home-link">
+            Home
+        </a>
+       <a href="/logout" class="home-link">
+    Logout
+     </a>
+
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="title-section">
+
+            <h1>Admin Dashboard</h1>
+
+            <p>
+                Manage customer bookings and rental requests
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Total Bookings</h3>
+
+                <div class="number">
+                    {{ total_bookings }}
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Pending</h3>
+
+                <div class="number">
+                    {{ pending_bookings }}
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Confirmed</h3>
+
+                <div class="number">
+                    {{ confirmed_bookings }}
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Cancelled</h3>
+
+                <div class="number">
+                    {{ cancelled_bookings }}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="filters">
+
+            <form method="GET" action="/admin">
+
+                <input
+                    type="text"
+                    name="search"
+                    value="{{ search }}"
+                    placeholder="Search name, phone or car..."
+                    class="search-input"
+                >
+
+                <select name="status">
+
+                    <option value="">All Status</option>
+
+                    <option
+                        value="Pending"
+                        {% if status_filter == "Pending" %}selected{% endif %}
+                    >
+                        Pending
+                    </option>
+
+                    <option
+                        value="Confirmed"
+                        {% if status_filter == "Confirmed" %}selected{% endif %}
+                    >
+                        Confirmed
+                    </option>
+
+                    <option
+                        value="Cancelled"
+                        {% if status_filter == "Cancelled" %}selected{% endif %}
+                    >
+                        Cancelled
+                    </option>
+
+                </select>
+
+                <button type="submit" class="filter-button">
+                    Search
+                </button>
+
+                <a href="/admin" class="clear-button">
+                    Clear
+                </a>
+
+            </form>
+
+        </div>
+
+
+        <div class="table-container">
+
+            {% if bookings %}
+
+            <table>
+
+               <thead>
+    <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Phone</th>
+        <th>Car</th>
+        <th>Pickup Location</th>
+        <th>Pickup Date</th>
+        <th>Pickup Time</th>
+        <th>Return Date</th>
+        <th>Days</th>
+        <th>KM</th>
+        <th>Status</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+</thead>
+
+
+                <tbody>
+
+                    {% for booking in bookings %}
+
+                    <tr>
+
+                      <td>#{{ booking.id }}</td>
+
+<td>{{ booking.name }}</td>
+
+<td>{{ booking.phone }}</td>
+
+<td>{{ booking.car }}</td>
+
+<td>{{ booking.pickup_location }}</td>
+
+<td>{{ booking.pickup }}</td>
+
+<td>{{ booking.pickup_time }}</td>
+
+<td>{{ booking.return_date }}</td>
+
+<td>{{ booking.days }}</td>
+
+<td>{{ booking.km }} km</td>
+
+                        <td>
+
+                            {% if booking.status == "Confirmed" %}
+
+                                <span class="status-badge confirmed">
+                                    Confirmed
+                                </span>
+
+                            {% elif booking.status == "Cancelled" %}
+
+                                <span class="status-badge cancelled">
+                                    Cancelled
+                                </span>
+
+                            {% else %}
+
+                                <span class="status-badge pending">
+                                    Pending
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <td>
+
+                            <form
+                                method="POST"
+                                action="/admin/update-status/{{ booking.id }}"
+                                class="status-form"
+                            >
+
+                                <select name="status">
+
+                                    <option
+                                        value="Pending"
+                                        {% if booking.status == "Pending" %}selected{% endif %}
+                                    >
+                                        Pending
+                                    </option>
+
+                                    <option
+                                        value="Confirmed"
+                                        {% if booking.status == "Confirmed" %}selected{% endif %}
+                                    >
+                                        Confirmed
+                                    </option>
+
+                                    <option
+                                        value="Cancelled"
+                                        {% if booking.status == "Cancelled" %}selected{% endif %}
+                                    >
+                                        Cancelled
+                                    </option>
+
+                                </select>
+
+                                <button
+                                    type="submit"
+                                    class="update-btn"
+                                >
+                                    Update
+                                </button>
+
+                            </form>
+
+                        </td>
+
+
+                        <td>
+
+                            <form
+                                method="POST"
+                                action="/admin/delete/{{ booking.id }}"
+                                onsubmit="return confirm('Delete this booking?');"
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="delete-btn"
+                                >
+                                    Delete
+                                </button>
+
+                            </form>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+            <div class="empty">
+
+                No bookings found.
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

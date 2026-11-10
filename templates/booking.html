@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Book Your Car - Jayasingha Signature & Rent-a-Car
+    </title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 10% 15%,
+                    rgba(255,255,255,0.10),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 85%,
+                    rgba(255,255,255,0.08),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0f172a 0%,
+                    #1e293b 50%,
+                    #334155 100%
+                );
+
+            color: #111827;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: rgba(2, 6, 23, 0.96);
+
+            padding: 15px 7%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 4px 18px rgba(0,0,0,0.20);
+        }
+
+        .brand {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 21px;
+
+            font-weight: 800;
+        }
+
+        .home-link {
+            color: white;
+
+            text-decoration: none;
+
+            background: #374151;
+
+            padding: 10px 16px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= PAGE ================= */
+
+        .page {
+            width: 92%;
+
+            max-width: 1100px;
+
+            margin: 50px auto 70px;
+        }
+
+
+        .header {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: white;
+
+            font-size: 45px;
+
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #cbd5e1;
+
+            font-size: 16px;
+        }
+
+
+        /* ================= LAYOUT ================= */
+
+        .booking-layout {
+            display: grid;
+
+            grid-template-columns: 1.35fr 0.65fr;
+
+            gap: 25px;
+
+            align-items: start;
+        }
+
+
+        /* ================= CARD ================= */
+
+        .booking-card,
+        .summary-card {
+
+            background: rgba(255,255,255,0.98);
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.20);
+        }
+
+
+        .form-title {
+            font-size: 22px;
+
+            font-weight: 800;
+
+            margin-bottom: 24px;
+        }
+
+
+        /* ================= FORM ================= */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px;
+        }
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: #374151;
+
+            margin-bottom: 7px;
+        }
+
+        input,
+        select {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 9px;
+
+            background: white;
+
+            color: #111827;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.2s ease;
+        }
+
+        input:focus,
+        select:focus {
+
+            border-color: #334155;
+
+            box-shadow:
+                0 0 0 3px rgba(51,65,85,0.08);
+        }
+
+        input[readonly] {
+
+            background: #f3f4f6;
+
+            cursor: not-allowed;
+        }
+
+        .help-text {
+
+            margin-top: 6px;
+
+            color: #6b7280;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        /* ================= AVAILABILITY ================= */
+
+        .availability-box {
+
+            display: none;
+
+            margin-top: 8px;
+
+            padding: 10px 12px;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .availability-box.checking {
+
+            display: block;
+
+            background: #f1f5f9;
+
+            color: #475569;
+        }
+
+        .availability-box.available {
+
+            display: block;
+
+            background: #dcfce7;
+
+            color: #166534;
+        }
+
+        .availability-box.unavailable {
+
+            display: block;
+
+            background: #fee2e2;
+
+            color: #991b1b;
+        }
+
+
+        /* ================= SUBMIT ================= */
+
+        .submit-btn {
+
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #111827;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .submit-btn:hover {
+
+            background: #334155;
+
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+
+            background: #9ca3af;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* ================= SUMMARY ================= */
+
+        .summary-card {
+
+            position: sticky;
+
+            top: 100px;
+        }
+
+        .summary-title {
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+            margin-bottom: 20px;
+        }
+
+        .summary-empty {
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        .summary-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .summary-row span:first-child {
+
+            color: #6b7280;
+
+            font-size: 12px;
+        }
+
+        .summary-row span:last-child {
+
+            color: #111827;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            text-align: right;
+        }
+
+        .summary-total {
+
+            margin-top: 18px;
+
+            padding: 17px;
+
+            border-radius: 12px;
+
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .summary-total small {
+
+            display: block;
+
+            color: #cbd5e1;
+
+            font-size: 11px;
+
+            margin-bottom: 5px;
+        }
+
+        .summary-total strong {
+
+            font-size: 25px;
+        }
+
+
+        /* ================= SUCCESS ================= */
+
+        .success-box {
+
+            background: #dcfce7;
+
+            color: #166534;
+
+            padding: 16px;
+
+            border-radius: 10px;
+
+            margin-bottom: 18px;
+
+            text-align: center;
+
+            font-weight: 700;
+        }
+
+        .whatsapp-btn {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            background: #25D366;
+
+            color: white;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            font-weight: 700;
+        }
+
+
+        /* ================= ERROR ================= */
+
+        .error-box {
+
+            background: #fee2e2;
+
+            color: #991b1b;
+
+            padding: 16px;
+
+            border-radius: 10px;
+
+            margin-bottom: 18px;
+
+            text-align: center;
+
+            font-weight: 700;
+        }
+
+
+        /* ================= BACK ================= */
+
+        .back-home {
+
+            display: block;
+
+            width: fit-content;
+
+            margin: 25px auto 0;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 700;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
+
+            .booking-layout {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .summary-card {
+
+                position: static;
+
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            nav {
+
+                padding: 14px 20px;
+
+            }
+
+            .brand {
+
+                font-size: 18px;
+
+            }
+
+            .page {
+
+                width: 94%;
+
+                margin-top: 35px;
+
+            }
+
+            .header h1 {
+
+                font-size: 33px;
+
+            }
+
+            .booking-card,
+            .summary-card {
+
+                padding: 22px;
+
+                border-radius: 15px;
+
+            }
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .full {
+
+                grid-column: auto;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <a
+            href="/"
+            class="brand"
+        >
+            Jayasingha Rent-a-Car
+        </a>
+
+        <a
+            href="/"
+            class="home-link"
+        >
+            Home
+        </a>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="page">
+
+
+        <div class="header">
+
+            <h1>
+                Book Your Car
+            </h1>
+
+            <p>
+                Choose your vehicle and complete your rental details
+            </p>
+
+        </div>
+
+
+        <div class="booking-layout">
+
+
+            <!-- ================= FORM ================= -->
+
+            <div class="booking-card">
+
+
+                {% if success %}
+
+                    <div class="success-box">
+
+                        ✅ Your booking was submitted successfully!
+
+                    </div>
+
+
+                    <a
+                        href="{{ whatsapp_url }}"
+                        target="_blank"
+                        class="whatsapp-btn"
+                    >
+                        💬 Send Booking to WhatsApp
+                    </a>
+
+
+                {% endif %}
+
+
+                {% if error %}
+
+                    <div class="error-box">
+
+                        ❌ {{ error }}
+
+                    </div>
+
+                {% endif %}
+
+
+                {% if not success %}
+
+
+                    <div class="form-title">
+
+                        Rental Details
+
+                    </div>
+
+
+                    <form
+                        method="POST"
+                        action="/booking"
+                        id="bookingForm"
+                    >
+
+
+                        <div class="form-grid">
+
+
+                            <!-- NAME -->
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Full Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value="{{ form_data.get('name', '') if form_data else '' }}"
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone Number
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    value="{{ form_data.get('phone', '') if form_data else '' }}"
+                                    placeholder="0771234567"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- CAR -->
+
+                            <div class="form-group full">
+
+                                <label for="car">
+                                    Select Car
+                                </label>
+
+                                <select
+                                    id="car"
+                                    name="car"
+                                    required
+                                >
+
+                                    <option value="">
+                                        -- Select a Car --
+                                    </option>
+
+                                    <option
+                                        value="Toyota Prius"
+                                        {% if selected_car == "Toyota Prius" %}
+                                        selected
+                                        {% endif %}
+                                    >
+                                        Toyota Prius
+                                    </option>
+
+                                    <option
+                                        value="Toyota Aqua"
+                                        {% if selected_car == "Toyota Aqua" %}
+                                        selected
+                                        {% endif %}
+                                    >
+                                        Toyota Aqua
+                                    </option>
+
+                                    <option
+                                        value="Honda GS1"
+                                        {% if selected_car == "Honda GS1" %}
+                                        selected
+                                        {% endif %}
+                                    >
+                                        Honda GS1
+                                    </option>
+
+                                    <option
+                                        value="Honda Vezel"
+                                        {% if selected_car == "Honda Vezel" %}
+                                        selected
+                                        {% endif %}
+                                    >
+                                        Honda Vezel
+                                    </option>
+
+                                    <option
+                                        value="Honda Civic"
+                                        {% if selected_car == "Honda Civic" %}
+                                        selected
+                                        {% endif %}
+                                    >
+                                        Honda Civic
+                                    </option>
+
+                                </select>
+
+
+                                <div
+                                    id="availabilityBox"
+                                    class="availability-box"
+                                ></div>
+
+                            </div>
+
+
+                            <!-- PICKUP LOCATION -->
+
+                            <div class="form-group full">
+
+                                <label for="pickup_location">
+                                    Pickup Location
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="pickup_location"
+                                    name="pickup_location"
+                                    value="{{ form_data.get('pickup_location', '') if form_data else '' }}"
+                                    placeholder="Enter pickup location"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- PICKUP DATE -->
+
+                            <div class="form-group">
+
+                                <label for="pickup">
+                                    Pickup Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="pickup"
+                                    name="pickup"
+                                    value="{{ form_data.get('pickup', '') if form_data else '' }}"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- PICKUP TIME -->
+
+                            <div class="form-group">
+
+                                <label for="pickup_time">
+                                    Pickup Time
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="pickup_time"
+                                    name="pickup_time"
+                                    value="{{ form_data.get('pickup_time', '') if form_data else '' }}"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- RETURN -->
+
+                            <div class="form-group">
+
+                                <label for="return_date">
+                                    Return Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="return_date"
+                                    name="return_date"
+                                    value="{{ form_data.get('return_date', '') if form_data else '' }}"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- DAYS -->
+
+                            <div class="form-group">
+
+                                <label for="days">
+                                    How Many Days
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="days"
+                                    name="days"
+                                    min="1"
+                                    readonly
+                                    placeholder="Automatically calculated"
+                                >
+
+                                <div class="help-text">
+                                    Automatically calculated from your dates.
+                                </div>
+
+                            </div>
+
+
+                            <!-- KM -->
+
+                            <div class="form-group full">
+
+                                <label for="km">
+                                    Estimated Distance (KM)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="km"
+                                    name="km"
+                                    value="{{ form_data.get('km', '') if form_data else '' }}"
+                                    min="0"
+                                    step="0.1"
+                                    placeholder="Example: 250"
+                                    required
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="submit-btn"
+                            id="submitBtn"
+                            disabled
+                        >
+                            Submit Booking
+                        </button>
+
+
+                    </form>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+            <!-- ================= SUMMARY ================= -->
+
+            <aside class="summary-card">
+
+
+                <div class="summary-title">
+                    Booking Summary
+                </div>
+
+
+                <div id="summaryEmpty" class="summary-empty">
+
+                    Select a car and your rental dates to see
+                    your estimated booking summary here.
+
+                </div>
+
+
+                <div id="summaryContent" style="display:none;">
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Vehicle
+                        </span>
+
+                        <span id="summaryCar">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Daily Rate
+                        </span>
+
+                        <span id="summaryRate">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Pickup
+                        </span>
+
+                        <span id="summaryPickup">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Return
+                        </span>
+
+                        <span id="summaryReturn">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Rental Days
+                        </span>
+
+                        <span id="summaryDays">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Estimated KM
+                        </span>
+
+                        <span id="summaryKm">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-total">
+
+                        <small>
+                            ESTIMATED RENTAL TOTAL
+                        </small>
+
+                        <strong id="summaryTotal">
+                            Rs. 0
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </aside>
+
+
+        </div>
+
+
+        <a
+            href="/"
+            class="back-home"
+        >
+            ← Back to Home
+        </a>
+
+
+    </main>
+
+
+    <script>
+
+
+        /* =========================================================
+           CAR PRICES
+        ========================================================== */
+
+        const carPrices = {
+
+            "Toyota Prius": 12000,
+
+            "Toyota Aqua": 10000,
+
+            "Honda GS1": 9000,
+
+            "Honda Vezel": 12000,
+
+            "Honda Civic": 12000
+
+        };
+
+
+        /* =========================================================
+           ELEMENTS
+        ========================================================== */
+
+        const carInput =
+            document.getElementById("car");
+
+        const pickupInput =
+            document.getElementById("pickup");
+
+        const returnInput =
+            document.getElementById("return_date");
+
+        const daysInput =
+            document.getElementById("days");
+
+        const kmInput =
+            document.getElementById("km");
+
+        const submitBtn =
+            document.getElementById("submitBtn");
+
+        const availabilityBox =
+            document.getElementById("availabilityBox");
+
+
+        const summaryEmpty =
+            document.getElementById("summaryEmpty");
+
+        const summaryContent =
+            document.getElementById("summaryContent");
+
+
+        const summaryCar =
+            document.getElementById("summaryCar");
+
+        const summaryRate =
+            document.getElementById("summaryRate");
+
+        const summaryPickup =
+            document.getElementById("summaryPickup");
+
+        const summaryReturn =
+            document.getElementById("summaryReturn");
+
+        const summaryDays =
+            document.getElementById("summaryDays");
+
+        const summaryKm =
+            document.getElementById("summaryKm");
+
+        const summaryTotal =
+            document.getElementById("summaryTotal");
+
+
+        let carAvailable = false;
+
+
+        /* =========================================================
+           FORMAT MONEY
+        ========================================================== */
+
+        function formatMoney(amount) {
+
+            return "Rs. " +
+                amount.toLocaleString("en-LK");
+
+        }
+
+
+        /* =========================================================
+           CALCULATE DAYS
+        ========================================================== */
+
+        function calculateDays() {
+
+            if (
+                !pickupInput ||
+                !returnInput ||
+                !daysInput
+            ) {
+                return 0;
+            }
+
+
+            if (
+                !pickupInput.value ||
+                !returnInput.value
+            ) {
+
+                daysInput.value = "";
+
+                return 0;
+
+            }
+
+
+            const start =
+                new Date(
+                    pickupInput.value + "T00:00:00"
+                );
+
+            const end =
+                new Date(
+                    returnInput.value + "T00:00:00"
+                );
+
+
+            const difference =
+                end - start;
+
+
+            const days =
+                Math.ceil(
+                    difference /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            if (days > 0) {
+
+                daysInput.value = days;
+
+                return days;
+
+            }
+
+
+            daysInput.value = "";
+
+            return 0;
+
+        }
+
+
+        /* =========================================================
+           UPDATE SUMMARY
+        ========================================================== */
+
+        function updateSummary() {
+
+            if (!carInput) {
+                return;
+            }
+
+
+            const car =
+                carInput.value;
+
+            const rate =
+                carPrices[car] || 0;
+
+            const days =
+                calculateDays();
+
+
+            const km =
+                kmInput && kmInput.value
+                    ? kmInput.value
+                    : "-";
+
+
+            if (
+                !car &&
+                !pickupInput.value &&
+                !returnInput.value
+            ) {
+
+                summaryEmpty.style.display =
+                    "block";
+
+                summaryContent.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            summaryEmpty.style.display =
+                "none";
+
+            summaryContent.style.display =
+                "block";
+
+
+            summaryCar.textContent =
+                car || "-";
+
+
+            summaryRate.textContent =
+                rate
+                    ? formatMoney(rate) + " / day"
+                    : "-";
+
+
+            summaryPickup.textContent =
+                pickupInput.value || "-";
+
+
+            summaryReturn.textContent =
+                returnInput.value || "-";
+
+
+            summaryDays.textContent =
+                days
+                    ? days + " day" +
+                        (days > 1 ? "s" : "")
+                    : "-";
+
+
+            summaryKm.textContent =
+                km === "-"
+                    ? "-"
+                    : km + " km";
+
+
+            const total =
+                rate * days;
+
+
+            summaryTotal.textContent =
+                formatMoney(total);
+
+        }
+
+
+        /* =========================================================
+           CHECK AVAILABILITY
+        ========================================================== */
+
+        async function checkAvailability() {
+
+            if (
+                !carInput ||
+                !pickupInput ||
+                !returnInput ||
+                !availabilityBox
+            ) {
+                return;
+            }
+
+
+            const car =
+                carInput.value;
+
+            const pickup =
+                pickupInput.value;
+
+            const returnDate =
+                returnInput.value;
+
+
+            carAvailable = false;
+
+            submitBtn.disabled = true;
+
+
+            if (
+                !car ||
+                !pickup ||
+                !returnDate
+            ) {
+
+                availabilityBox.className =
+                    "availability-box";
+
+                availabilityBox.textContent =
+                    "";
+
+                updateSummary();
+
+                return;
+
+            }
+
+
+            const days =
+                calculateDays();
+
+
+            if (days <= 0) {
+
+                availabilityBox.className =
+                    "availability-box unavailable";
+
+                availabilityBox.textContent =
+                    "❌ Return date must be after pickup date.";
+
+                updateSummary();
+
+                return;
+
+            }
+
+
+            availabilityBox.className =
+                "availability-box checking";
+
+            availabilityBox.textContent =
+                "Checking availability...";
+
+
+            updateSummary();
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/check-availability?car=" +
+                        encodeURIComponent(car) +
+                        "&pickup=" +
+                        encodeURIComponent(pickup) +
+                        "&return_date=" +
+                        encodeURIComponent(returnDate)
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (data.available) {
+
+                    carAvailable = true;
+
+                    availabilityBox.className =
+                        "availability-box available";
+
+                    availabilityBox.textContent =
+                        "✅ " + data.message;
+
+
+                    submitBtn.disabled = false;
+
+                } else {
+
+                    carAvailable = false;
+
+                    availabilityBox.className =
+                        "availability-box unavailable";
+
+                    availabilityBox.textContent =
+                        "❌ " + data.message;
+
+
+                    submitBtn.disabled = true;
+
+                }
+
+
+            } catch (error) {
+
+                carAvailable = false;
+
+                availabilityBox.className =
+                    "availability-box unavailable";
+
+                availabilityBox.textContent =
+                    "⚠️ Unable to check availability.";
+
+                submitBtn.disabled = true;
+
+            }
+
+
+        }
+
+
+        /* =========================================================
+           EVENTS
+        ========================================================== */
+
+        const todayForBooking = new Date();
+        const todayBookingString = [
+            todayForBooking.getFullYear(),
+            String(todayForBooking.getMonth() + 1).padStart(2, "0"),
+            String(todayForBooking.getDate()).padStart(2, "0")
+        ].join("-");
+        if (pickupInput) pickupInput.min = todayBookingString;
+        if (returnInput) returnInput.min = pickupInput && pickupInput.value ? pickupInput.value : todayBookingString;
+
+        if (carInput) {
+
+            carInput.addEventListener(
+                "change",
+                function() {
+
+                    updateSummary();
+
+                    checkAvailability();
+
+                }
+            );
+
+        }
+
+
+        if (pickupInput) {
+
+            pickupInput.addEventListener(
+                "change",
+                function() {
+
+                    returnInput.min =
+                        pickupInput.value;
+
+                    updateSummary();
+
+                    checkAvailability();
+
+                }
+            );
+
+        }
+
+
+        if (returnInput) {
+
+            returnInput.addEventListener(
+                "change",
+                function() {
+
+                    updateSummary();
+
+                    checkAvailability();
+
+                }
+            );
+
+        }
+
+
+        if (kmInput) {
+
+            kmInput.addEventListener(
+                "input",
+                updateSummary
+            );
+
+        }
+
+
+        /* =========================================================
+           FORM SUBMIT SAFETY
+        ========================================================== */
+
+        const bookingForm =
+            document.getElementById("bookingForm");
+
+
+        if (bookingForm) {
+
+            bookingForm.addEventListener(
+                "submit",
+                function(event) {
+
+                    const days =
+                        calculateDays();
+
+
+                    if (!carAvailable) {
+
+                        event.preventDefault();
+
+                        alert(
+                            "Please select available dates for the selected car."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (days <= 0) {
+
+                        event.preventDefault();
+
+                        alert(
+                            "Please select valid pickup and return dates."
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =========================================================
+           INITIAL SUMMARY
+        ========================================================== */
+
+        updateSummary();
+     /* LOAD BOOKING DETAILS FROM HOME PAGE */
+const bookingParams = new URLSearchParams(window.location.search);
+
+const requestedCar = bookingParams.get("car");
+const requestedPickup = bookingParams.get("pickup");
+const requestedReturn = bookingParams.get("return_date");
+
+if (
+    carInput &&
+    requestedCar &&
+    Object.prototype.hasOwnProperty.call(carPrices, requestedCar)
+) {
+    carInput.value = requestedCar;
+}
+
+if (pickupInput && requestedPickup) {
+    pickupInput.value = requestedPickup;
+}
+
+if (returnInput && requestedReturn) {
+    returnInput.value = requestedReturn;
+}
+
+if (pickupInput && returnInput && pickupInput.value) {
+    returnInput.min = pickupInput.value;
+}
+
+updateSummary();
+
+if (
+    carInput &&
+    carInput.value &&
+    pickupInput &&
+    pickupInput.value &&
+    returnInput &&
+    returnInput.value
+) {
+    checkAvailability();
+}
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">HONDA CIVIC vehicle placeholder</title><desc id="desc">Premium illustrated car placeholder. Replace with your own vehicle photograph.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07111f"/><stop offset="0.58" stop-color="#14253a"/><stop offset="1" stop-color="#263c53"/></linearGradient>
+ <linearGradient id="metal" x1="0" y1="0" x2="0.2" y2="1"><stop offset="0" stop-color="#d1d5db"/><stop offset="0.38" stop-color="#8290a2"/><stop offset="0.7" stop-color="#273647"/><stop offset="1" stop-color="#0a121d"/></linearGradient>
+ <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#86a8f8" stop-opacity="0"/><stop offset="0.5" stop-color="#86a8f8" stop-opacity=".8"/><stop offset="1" stop-color="#86a8f8" stop-opacity="0"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="24"/></filter>
+</defs>
+<rect width="1200" height="720" fill="url(#bg)"/>
+<circle cx="950" cy="100" r="300" fill="#86a8f8" opacity=".08"/>
+<path d="M0 535 C240 500 430 575 625 537 S1010 510 1200 545 V720 H0Z" fill="#050b13" opacity=".45"/>
+<path d="M80 590 H1120" stroke="url(#glow)" stroke-width="3"/>
+<ellipse cx="625" cy="520" rx="380" ry="44" fill="#000" opacity=".58" filter="url(#shadow)"/>
+<!-- clean stylised side-view vehicle illustration -->
+<path d="M228 468 L266 411 Q292 376 366 363 L476 288 Q510 263 565 263 L723 263 Q780 268 821 312 L894 385 L968 403 Q1004 418 1012 456 L1003 491 L956 505 L278 505 L224 489 Z" fill="url(#metal)" stroke="#bfc8d2" stroke-opacity=".65" stroke-width="4"/>
+<path d="M410 358 L493 297 Q516 282 559 282 L629 282 L629 358 Z" fill="#0a1a2b" stroke="#75879a" stroke-width="3"/>
+<path d="M650 282 L719 284 Q761 289 793 324 L827 358 L650 358 Z" fill="#0a1a2b" stroke="#75879a" stroke-width="3"/>
+<path d="M642 281 L642 368" stroke="#aebbc8" stroke-opacity=".65" stroke-width="4"/>
+<path d="M291 420 L392 396 L413 400 L397 421 L288 442 Z" fill="#86a8f8" opacity=".9"/>
+<path d="M900 416 L964 432 L978 453 L920 451 Z" fill="#f5f2df"/>
+<path d="M299 472 H939" stroke="#e2e8f0" stroke-opacity=".25" stroke-width="3"/>
+<path d="M477 378 L471 462 M656 373 L656 462 M825 381 L835 462" stroke="#0b1725" stroke-width="4"/>
+<path d="M494 390 H575 M680 390 H760" stroke="#d6dde5" stroke-opacity=".45" stroke-width="3"/>
+<circle cx="378" cy="487" r="63" fill="#050a10" stroke="#68798b" stroke-width="8"/>
+<circle cx="378" cy="487" r="38" fill="#8a98a8" stroke="#d5dde5" stroke-width="6"/>
+<circle cx="378" cy="487" r="14" fill="#172536"/>
+<circle cx="870" cy="487" r="63" fill="#050a10" stroke="#68798b" stroke-width="8"/>
+<circle cx="870" cy="487" r="38" fill="#8a98a8" stroke="#d5dde5" stroke-width="6"/>
+<circle cx="870" cy="487" r="14" fill="#172536"/>
+<path d="M90 122 H1110" stroke="#ffffff" stroke-opacity=".12"/>
+<text x="86" y="90" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#86a8f8" letter-spacing="7">JAYASINGHA SIGNATURE</text>
+<text x="86" y="160" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700" fill="#ffffff">HONDA CIVIC</text>
+<text x="90" y="205" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#cbd5e1" letter-spacing="5">SEDAN • VEHICLE PHOTO PLACEHOLDER</text>
+<text x="1110" y="665" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#d4dbe4" opacity=".75">Replace with your real car photo when ready</text>
+</svg>
